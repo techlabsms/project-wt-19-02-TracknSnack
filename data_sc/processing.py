@@ -112,13 +112,4 @@ def unit_convert(input_frame):
 
 
 
-    input_frame_bs[0] = input_frame_bs[0] * unit_scala['scala']
-    input_frame_bs[1] = unit_scala['out']
-    return input_frame_bs
 
-
-
-input_frame_bs = [10, 'kg']
-
-out= unit_convert(input_frame_bs)
-print(out)
