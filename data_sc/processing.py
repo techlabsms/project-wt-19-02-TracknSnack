@@ -99,31 +99,26 @@ unit_scala = [
     ]
 
 def unit_convert(input_frame):
-    for keys, vals in input_frame.items():
-        found= False
-        for unit in unit_scala:
-            for possiblitiy in unit['possible']:
-                if vals[1] is possiblitiy:
-                    input_frame[keys][0]= input_frame[keys][0] * unit['scala']
-                    input_frame[keys][1]= unit['out']
-                    found = True
-                    break
-        if not found:
-            print('Ups! ' + vals[1] + " for " + keys + " is not found, is it a volume or mass?")
-            types= input()
-            r_unit = 'g'
-            if 'volume' in types:
-                r_unit = 'ml'
-            elif 'mass' in types:
-                r_unit = 'g'
-            print ("Ups! " + vals[1] + " for " + keys + " is not a known unit! Please give the conversion to " + r_unit)
-            conv= input()
-            input_frame[keys][0] = input_frame[keys] [0]*int(conv)
-            input_frame[keys][1] = r_unit
-            return input_frame
+    quantity_in = input_frame[0]
+    unit_in = input_frame[1]
+    for unit in unit_scala:
+        for possibility in unit['possible']:
+            if unit_in is possibility:
+                quantity_in = quantity_in * unit['scala']
+                unit_in = unit['out']
+    return quantity_in, unit_in
 
-input_frame_bs = {'apples': [10, 'kg'],
-                     'chocolate': [140, 'g']}
+
+
+
+
+    input_frame_bs[0] = input_frame_bs[0] * unit_scala['scala']
+    input_frame_bs[1] = unit_scala['out']
+    return input_frame_bs
+
+
+
+input_frame_bs = [10, 'kg']
 
 out= unit_convert(input_frame_bs)
 print(out)
