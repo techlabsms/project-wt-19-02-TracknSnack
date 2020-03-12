@@ -1,0 +1,82 @@
+
+
+
+<IngredientField@BoxLayout>:
+    size_hint_y: None
+    height : 80
+
+    BoxLayout:
+        size_hint_x : 0.2
+        orientation: 'vertical'
+        Label:
+            id: ingredient_in
+            text: 'infredinr'
+        TextInput:
+            id: ingredient_out
+            text: 'Ingredient'
+            halign: 'center'
+            valign: 'center'
+            multiline: False
+    TextInput:
+        input_type: "number"
+        id: q_out
+        size_hint_x : 0.1
+        text : '0'
+    Spinner:
+        id: unit_out
+        size_hint_x : 0.1
+        values: 'g', 'ml'
+        text: 'g'
+
+    Label:
+        size_hint_x : 0.05
+        text: ' -> '
+    BoxLayout:
+        size_hint_x : 0.1
+        orientation: 'vertical'
+        TextInput:
+            input_type: "number"
+            id: sugar_per_unit
+            text: '0'
+        Label:
+            text: 'g Sugar / 100 g'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x : 0.2
+        Label:
+            text: 'Total:'
+        BoxLayout:
+            Label:
+                id: total
+                text: '0'
+
+            Label:
+                text: 'g Sugar'
+
+<InputProcessingMenu@Screen>:
+    name: 'processing'
+    on_pre_enter: root.load_database()
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            GridLayout:
+                cols: 1
+                padding: 10
+                spacing: 10
+                height: self.minimum_height
+                size_hint_y: None
+                #size_hint: None, None
+                do_scroll_x: False
+                id: layout
+        Label:
+            id: total_all
+            text: 'Press Calculate '
+            size_hint_y: 0.1
+        Button:
+            id: but
+            text: 'Run'
+            #on_release: root.fill_table()
+            size_hint_y: 0.1
+
+
+

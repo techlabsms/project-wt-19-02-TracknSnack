@@ -1,0 +1,15 @@
+<InputMenu@Screen>:
+    name: 'input'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint_y: 0.20
+            text: ' Image to process:'
+        FileChooser:
+            id: fc
+            FileChooserIconLayout
+            FileChooserListLayout
+        Button:
+            size_hint_y: 0.10
+            text: 'Analyze'
+            on_release: root.read()
